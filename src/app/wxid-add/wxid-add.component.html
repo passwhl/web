@@ -1,0 +1,63 @@
+<div style="width: 100%;display: flex;flex-flow: column nowrap;align-items: center;">
+  <fieldset class="layui-elem-field" style="width: 90%;margin-top: 32px;">
+    <legend>数据导入</legend>
+    <div class="layui-field-box">
+      <div style="padding:8px;display: flex;flex-flow: row nowrap;align-items: center;justify-content: center;">
+        <textarea name="desc" placeholder="按回车换行" [(ngModel)]="inputData" (input)="inputChange()" class="layui-textarea"></textarea>
+        <span style="margin: 0px 16px 0px 16px;">OR</span>
+        <div style="height:100%;display: flex; flex-flow: column nowrap;align-items: center;justify-content: space-around;">
+          <button type="button" class="layui-btn layui-btn-fluid" id="file"><i class="layui-icon">&#xe67c;</i>选择文件</button>
+          <button type="button" class="layui-btn layui-btn-fluid" style="margin-top: 8px;"  (click)="importData()">导入</button>
+        </div>
+<!--        <button type="button" class="layui-btn" id="file"><i class="layui-icon">&#xe67c;</i>选择文件</button>-->
+<!--        <span style="margin: 0px 16px 0px 16px;">OR</span>-->
+<!--        <input id="data" type="text" autocomplete="off" style="padding: 12px;border: 1px solid #eee;flex: 1;color: #777;" [(ngModel)]="inputData" (input)="inputChange()" (keyup.enter)="importData()" placeholder="手动输入以空格分割">-->
+<!--        <button class="layui-btn" style="margin-left: 16px;"  (click)="importData()">导入</button>-->
+      </div>
+      <div style="text-align: center;">{{this.fileName}}输入数据条数<span style="color: red;">{{inputDataList.length}}</span>条</div>
+    </div>
+  </fieldset>
+
+  <div class="layui-row" style="width: 90%;display: flex;flex-flow: row nowrap;">
+    <fieldset class="layui-elem-field" style="margin-top: 16px;width: auto;flex: 1;">
+      <legend style="display: flex;flex-flow: row nowrap;align-items: center;">
+        新增的微信
+        <span class="layui-badge" style="position: static;margin-left: 8px;">{{this.newAdd.length}}</span>
+        <i (click)="exportNotExist()" class="layui-icon" style="position: relative;font-size:22px;margin-left: 8px;">&#xe601;</i>
+      </legend>
+
+      <div class="layui-field-box">
+        <table class="layui-table">
+          <thead>
+            <tr><th>行号</th><th>微信号</th></tr>
+          </thead>
+          <tbody *ngFor="let item of newAdd;let i=index;" ><tr>
+            <td>{{item.rowNum}}</td>
+            <td>{{item.wxid}}</td>
+          </tr></tbody>
+        </table>
+      </div>
+    </fieldset>
+    <fieldset class="layui-elem-field" style="margin-top: 16px;width: auto;flex: 1;">
+      <legend style="display: flex;flex-flow: row nowrap;align-items: center;">
+        已存在微信
+        <span class="layui-badge" style="position: static;margin-left: 8px;">{{this.oldData.length}}</span>
+        <i (click)="exportExist()" class="layui-icon" style="position: relative;font-size:22px;margin-left: 8px;">&#xe601;</i>
+      </legend>
+      <div class="layui-field-box">
+        <table class="layui-table">
+          <thead>
+          <tr><th>行号</th><th>微信号</th></tr>
+          </thead>
+          <tbody *ngFor="let item of oldData;let i=index;" ><tr>
+            <td>{{item.rowNum}}</td>
+            <td>{{item.wxid}}</td>
+          </tr></tbody>
+        </table>
+      </div>
+    </fieldset>
+  </div>
+
+
+
+</div>

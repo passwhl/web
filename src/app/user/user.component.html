@@ -1,0 +1,35 @@
+<div style="width: 100%;display: flex;flex-flow: column nowrap;align-items: center;">
+  <fieldset class="layui-elem-field" style="width: 90%;margin-top: 32px;">
+    <legend>添加用户</legend>
+    <div class="layui-field-box">
+      <div style="padding:8px;display: flex;flex-flow: row nowrap;align-items: center;justify-content: center;">
+        <label style="margin: 0px 4px 0px 16px;font-weight:bold;">用户名</label>
+        <input [(ngModel)]="user.name" id="name" type="text" autocomplete="off" style="padding: 8px;border: 1px solid #eee;margin: 0px 16px 0px 4px;flex: 1;color: #777;" >
+        <label style="margin: 0px 4px 0px 16px;font-weight:bold;">密码</label>
+        <input [(ngModel)]="user.pwd" type="text" autocomplete="off" style="padding: 8px;border: 1px solid #eee;margin: 0px 16px 0px 4px;flex: 3;color: #777;" (keyup.enter)="addUser()">
+        <button class="layui-btn" type="submit"  (click)="addUser()">添加用户</button>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="layui-elem-field" style="width: 90%;">
+    <legend>用户列表</legend>
+    <div class="layui-field-box">
+      <table class="layui-table">
+        <thead><tr>
+          <th>序号</th><th>用户名</th><th>操作</th>
+        </tr></thead>
+        <tbody *ngFor="let user of result.list;let i=index;" ><tr>
+          <td>{{( (result.pageNum-1) * result.pageSize)+i+1}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.IsAdmin==1?'管理员':''}}<a *ngIf="user.IsAdmin!=1" class="layui-btn layui-btn-danger layui-btn-xs" (click)="deleteUser(user,i)">删除</a></td>
+        </tr></tbody>
+      </table>
+      <div id="page" style="display: flex;flex-flow: row nowrap;justify-content: center;"></div>
+    </div>
+  </fieldset>
+</div>
+
+<script type="text/html" id="barDemo">
+
+</script>

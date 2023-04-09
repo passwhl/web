@@ -1,0 +1,35 @@
+<div style="width: 100%;display: flex;flex-flow: column nowrap;align-items: center;">
+  <fieldset class="layui-elem-field" style="width: 90%;margin-top: 32px;">
+    <legend>数据检索</legend>
+    <div class="layui-field-box">
+      <div style="padding:8px;display: flex;flex-flow: row nowrap;align-items: center;justify-content: center;">
+<!--        <label style="margin: 0px 4px 0px 16px;font-weight:bold;">时间范围</label>-->
+<!--        <input id="start" type="text" autocomplete="off" style="padding: 8px;border: 1px solid #eee;margin: 0px 16px 0px 4px;flex: 1;color: #777;" >-->
+        <label style="margin: 0px 4px 0px 16px;font-weight:bold;">关键字</label>
+        <input [(ngModel)]="key" type="text" autocomplete="off" style="padding: 8px;border: 1px solid #eee;margin: 0px 16px 0px 4px;flex: 3;color: #777;" placeholder="请输入关键字进行搜索" >
+        <button class="layui-btn" style="margin-left: 16px;"  (click)="search()">搜索</button>
+        <button class="layui-btn"  (click)="exportList()">导出本页</button>
+        <button class="layui-btn"  (click)="exportAllList()">导出所有</button>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="layui-elem-field" style="width: 90%;">
+    <legend>数据列表</legend>
+    <div class="layui-field-box">
+      <table class="layui-table">
+        <thead><tr>
+          <th>序号</th><th>微信号</th><th>导入人</th><th>导入时间</th><th>操作</th>
+        </tr></thead>
+        <tbody *ngFor="let item of result.list;let i=index;" ><tr>
+          <td>{{( (result.pageNum-1) * result.pageSize)+i+1}}</td>
+          <td>{{item.wxId}}</td>
+          <td>{{item.user}}</td>
+          <td>{{item.dateTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+          <td><a class="layui-btn layui-btn-danger layui-btn-xs" (click)="deleteWxid(item,i)">删除</a></td>
+        </tr></tbody>
+      </table>
+      <div id="page" style="display: flex;flex-flow: row nowrap;justify-content: center;"></div>
+    </div>
+  </fieldset>
+</div>

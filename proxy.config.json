@@ -1,0 +1,7 @@
+{
+  "/send":{
+    "target":"https://api2.sendcloud.net/api/mail/send",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

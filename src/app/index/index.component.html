@@ -1,0 +1,11 @@
+<ul class="layui-nav" style="display: flex;flex-flow: row nowrap;justify-content: center;">
+  <div style="flex: 1;display: flex;flex-flow: row nowrap;align-items: center;justify-content: flex-start;padding-left: 5%;">
+    <div>您好,{{userInfo?.IsAdmin==1?'管理员,':''}}{{userInfo?.name}}</div>
+  </div>
+  <li class="layui-nav-item layui-this" lay-id='1'><a routerLink="/index/wxid">数据导入</a></li>
+  <li class="layui-nav-item" lay-id='2'><a routerLink="/index/wxid-list">数据管理</a></li>
+  <li *ngIf="userInfo['IsAdmin']==1" lay-id='3' class="layui-nav-item"><a routerLink="/index/user">用户管理</a></li>
+  <li class="layui-nav-item" lay-id='4'><a (click)="loginOut()">退出登录</a></li>
+  <div style="flex: 1"></div>
+</ul>
+<router-outlet></router-outlet>
