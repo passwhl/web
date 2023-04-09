@@ -13,11 +13,18 @@ declare let layui: any;
 export class IndexComponent implements OnInit {
 
   public userInfo: any = {};
+  public navIndex = 1;
 
   constructor(
     private api: ApiService,
     private router: Router
   ) {
+    (this.router.events.pipe(filter(event => event instanceof NavigationEnd)) as Observable<NavigationEnd>).subscribe(router => {
+      if(router.urlAfterRedirects == '/index/wxid')this.navIndex=1;
+      else if(router.urlAfterRedirects == '/index/wxid-list')this.navIndex=2;
+      else if(router.urlAfterRedirects == '/index/user')this.navIndex=3;
+      else this.navIndex=1;
+    });
   }
 
   ngOnInit(): void {
