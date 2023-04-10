@@ -111,7 +111,7 @@ export class ApiService {
     if (err.status === 401) {this.logout(); }
     if (err.status === 401) {throw {msg: "请重新登录"}; }
     if (err.status === 0) {throw {msg: "网络请求失败"}; }
-    if (err.status === 500){throw {msg: "服务器异常"}; }
+    if (err.status === 500){throw {msg: err.error}; }
     throw {msg: JSON.stringify(err)};
   }
 
