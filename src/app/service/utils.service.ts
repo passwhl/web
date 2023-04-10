@@ -31,11 +31,11 @@ export class UtilsService {
       let id = layui.layer.load();
       obj.preview((index:number, file:Blob | any, result:any)=>{
         console.info(file)
-        if(file.name.indexOf('txt')!=-1){
+        if(file.name.endsWith('txt')!=-1 || file.name.endsWith('log')!=-1){
           thisSer.readTextFile(file).then(data=>{
             sub.next({fileName:file.name,data});
           }).catch(err=>sub.error(err))
-        }else if(file.name.indexOf('xlsx')!=-1){
+        }else if(file.name.endsWith('xlsx')!=-1){
           thisSer.readXlsxFile(file).then(data=>{
             sub.next({fileName:file.name,data});
           }).catch(err=>sub.error(err))

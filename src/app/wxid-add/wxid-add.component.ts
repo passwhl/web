@@ -68,13 +68,11 @@ export class WxidAddComponent implements OnInit {
 
 
   createFileUi(){
-    this.utils.createFileChoose('#file','xlsx|txt').subscribe((res:any)=>{
-      console.info('啥情况',res);
+    this.utils.createFileChoose('#file','xlsx|txt|log').subscribe((res:any)=>{
       this.inputData = '';
       this.importResult = this.newAdd = this.oldData = [];
       this.fileName = res.fileName;
       this.inputDataList = res.data;
-      // this.importData();
     },err=>console.error(err))
   }
 
