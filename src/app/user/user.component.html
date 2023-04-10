@@ -22,7 +22,11 @@
         <tbody *ngFor="let user of result.list;let i=index;" ><tr>
           <td>{{( (result.pageNum-1) * result.pageSize)+i+1}}</td>
           <td>{{user.name}}</td>
-          <td>{{user.IsAdmin==1?'管理员':''}}<a *ngIf="user.IsAdmin!=1" class="layui-btn layui-btn-danger layui-btn-xs" (click)="deleteUser(user,i)">删除</a></td>
+          <td>
+            {{user.IsAdmin==1?'管理员':''}}
+            <a *ngIf="user.IsAdmin!=1" class="layui-btn layui-btn-danger layui-btn-xs" (click)="deleteUser(user,i)">删除</a>
+            <a *ngIf="user.IsAdmin!=1" class="layui-btn layui-btn-danger layui-btn-xs" style="margin-left: 16px;" (click)="changePwd(user,i)">修改密码</a>
+          </td>
         </tr></tbody>
       </table>
       <div id="page" style="display: flex;flex-flow: row nowrap;justify-content: center;"></div>

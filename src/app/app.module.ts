@@ -15,6 +15,7 @@ import {ApiService} from './service/api.service';
 import {UserComponent} from "./user/user.component";
 import {WxidComponent} from "./wxid/wxid.component";
 import {WxidAddComponent} from "./wxid-add/wxid-add.component";
+import {ChangePwdComponent} from "./change-pwd/change-pwd.component";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {WxidAddComponent} from "./wxid-add/wxid-add.component";
     IndexComponent,
     UserComponent,
     WxidComponent,
-    WxidAddComponent
+    WxidAddComponent,
+    ChangePwdComponent
   ],
   imports: [
     BrowserModule,

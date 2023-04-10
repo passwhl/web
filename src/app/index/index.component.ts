@@ -20,9 +20,11 @@ export class IndexComponent implements OnInit {
     private router: Router
   ) {
     (this.router.events.pipe(filter(event => event instanceof NavigationEnd)) as Observable<NavigationEnd>).subscribe(router => {
+      console.info('路由变更',router)
       if(router.urlAfterRedirects == '/index/wxid')this.navIndex=1;
       else if(router.urlAfterRedirects == '/index/wxid-list')this.navIndex=2;
       else if(router.urlAfterRedirects == '/index/user')this.navIndex=3;
+      else if(router.urlAfterRedirects.startsWith('/index/change-pwd'))this.navIndex=4;
       else this.navIndex=1;
     });
   }

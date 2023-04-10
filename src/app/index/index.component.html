@@ -5,6 +5,7 @@
   <li class="layui-nav-item" [ngClass]="{'layui-this':this.navIndex==1}"><a routerLink="/index/wxid">数据导入</a></li>
   <li class="layui-nav-item" [ngClass]="{'layui-this':this.navIndex==2}"><a routerLink="/index/wxid-list">数据管理</a></li>
   <li class="layui-nav-item" [ngClass]="{'layui-this':this.navIndex==3}" *ngIf="userInfo['IsAdmin']==1"><a routerLink="/index/user">用户管理</a></li>
+  <li class="layui-nav-item" [ngClass]="{'layui-this':this.navIndex==4}"><a routerLink="/index/change-pwd">修改密码</a></li>
   <li class="layui-nav-item" ><a (click)="loginOut()">退出登录</a></li>
   <div style="flex: 1"></div>
 </ul>

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../service/api.service';
 import * as XLSX from 'xlsx';
 import {DatePipe} from '@angular/common';
+import {Router} from "@angular/router";
 
 declare let layui: any;
 
@@ -12,16 +13,19 @@ declare let layui: any;
 })
 export class UserComponent implements OnInit {
 
+  public userInfo: any = {};
   public user = {name: '', pwd: ''};
   public result = {pageNum: 0, pageSize: 10, total: 0, list: []};
 
   constructor(
+    private router: Router,
     private api: ApiService,
     private readonly datePipe: DatePipe
   ) {
   }
 
   ngOnInit(): void {
+    this.userInfo = JSON.parse(localStorage.getItem('UserInfo') || '');
     this.getList(1, this.result.pageSize);
   }
 
@@ -57,5 +61,9 @@ export class UserComponent implements OnInit {
       curr: result.pageNum,  //当前页数，从服务端得到
       jump: (obj: any, first: any) => first ? null : this.getList(obj.curr, obj.limit)
     });
+  }
+
+  changePwd(user: any, i: number) {
+    this.router.navigate(['/index/change-pwd',user]).then();
   }
 }

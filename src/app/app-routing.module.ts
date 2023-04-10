@@ -5,6 +5,7 @@ import {IndexComponent} from './index/index.component';
 import {WxidComponent} from "./wxid/wxid.component";
 import {UserComponent} from "./user/user.component";
 import {WxidAddComponent} from "./wxid-add/wxid-add.component";
+import {ChangePwdComponent} from "./change-pwd/change-pwd.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
       {path: 'wxid', component: WxidAddComponent},
       {path: 'wxid-list', component: WxidComponent},
       {path: 'user', component: UserComponent},
+      {path: 'change-pwd', component: ChangePwdComponent},
   ]},
 ];
 
