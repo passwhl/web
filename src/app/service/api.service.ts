@@ -38,6 +38,7 @@ export class ApiService {
       subject.next(res);
       subject.complete();
     }).catch(err=>{
+      console.error('simRequest',err)
       layui.layer.close(id);
       layui.layer.alert(err.msg, {icon: 5});
     })
@@ -108,9 +109,9 @@ export class ApiService {
   handError(err, api: string, body: any, option: any): any{
     if (err.status === 402) {return this.refreshToken(api, body, option); }
     if (err.status === 401) {this.logout(); }
-    if (err.status === 401) {throw {msg: err.error}; }
-    if (err.status === 0) {throw {msg: err.error}; }
-    if (err.status === 500){throw {msg: err.error}; }
+    if (err.status === 401) {throw {msg: "请重新登录"}; }
+    if (err.status === 0) {throw {msg: "网络请求失败"}; }
+    if (err.status === 500){throw {msg: "服务器异常"}; }
     throw {msg: JSON.stringify(err)};
   }
 
